@@ -1,5 +1,3 @@
-
-
 def init():
     print("in init()")
 
