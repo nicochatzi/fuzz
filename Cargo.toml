@@ -7,4 +7,6 @@ edition = "2018"
 pyo3 = { version = "0.14.2", features = ["auto-initialize"] }
 log = { version = "0.4.14", features = ["max_level_info"] }
 simple_logger = "1.13.0"
-hotwatch = "0.4.5"
+cpal = "0.13.4"
+heapless = "0.7.4"
+notify = "4.0.17"

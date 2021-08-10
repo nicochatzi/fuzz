@@ -12,7 +12,7 @@ class Processor:
 
     def process(self):
         for sample in range(len(self.buffer)):
-            self.buffer[sample] = 2 * self.phase - 1
+            self.buffer[sample] = 0.02 * self.phase - 1
             self.phase = (self.phase + self.phase_inc) % 2 * 3.14
 
         return self.buffer
