@@ -17,7 +17,7 @@ fn main() {
     let config = device.default_output_config().unwrap();
     let sample_rate = config.sample_rate().0;
 
-    let path = format!("{}/scripts/tri.py", std::env!("CARGO_MANIFEST_DIR"));
+    let path = format!("{}/../scripts/dsp.py", std::env!("CARGO_MANIFEST_DIR"));
     let path_clone = path.clone();
 
     // watch a file and enqueue a message when the file has changed
@@ -43,7 +43,7 @@ fn main() {
             let reinterpret = move || -> PyResult<&PyAny> {
                 println!("reinterpreting");
                 let code = String::from_utf8(std::fs::read(&path_clone).unwrap()).unwrap();
-                let dsp = PyModule::from_code(py, &code, "tri.py", "scripts")?;
+                let dsp = PyModule::from_code(py, &code, "dsp.py", "scripts")?;
 
                 let proc = dsp.getattr("Processor")?.call0()?;
                 proc.call_method1("update", (256, sample_rate))?;

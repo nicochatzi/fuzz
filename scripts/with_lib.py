@@ -1,3 +1,5 @@
+import fuzz
+
 
 class Processor:
     def __init__(self):
@@ -12,7 +14,13 @@ class Processor:
 
     def process(self):
         for sample in range(len(self.buffer)):
-            self.buffer[sample] = (self.phase / 3.14) - 1
+            self.buffer[sample] = fuzz.sin(self.phase)
             self.phase = (self.phase + self.phase_inc) % (2 * 3.14)
 
         return self.buffer
+
+
+proc = Processor()
+proc.update(16, 44_000)
+buf = proc.process()
+print(buf)
