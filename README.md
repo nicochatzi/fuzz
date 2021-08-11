@@ -1,17 +1,5 @@
 # Write DSP code in Python and run it with Rust
 
-Build the rust-based python module with:
-
-
-```bash
-cd fuzz_lib
-python -m venv .env
-source .env/bin/activate
-pip install maturin
-maturin develop
-# test calling a Rust function from Python with:
-python ../scripts/with_lib.py
-```
 
 Run the Rust audio app with:
 
@@ -37,4 +25,19 @@ class Processor:
     def process(self):
         return [0 for i in range(self.buffer_size)]
 
+```
+
+## Building a Python module written in Rust
+
+Build the rust-based python module with:
+
+
+```bash
+cd fuzz_lib
+python -m venv .env
+source .env/bin/activate
+pip install maturin
+maturin develop
+# test calling a Rust function from Python with:
+python ../scripts/with_lib.py
 ```
